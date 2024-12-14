@@ -2,16 +2,21 @@ import Lottie from "lottie-react";
 import LoginLottieData from "../../assets/lottie/signin.json"
 import { useContext } from "react";
 import authContext from "../../Context/AuthContext/AuthContext";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
     const {handleSignIn} = useContext(authContext)
+
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state || '/'
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target
         const email = form.email.value
         const password = form.password.value
-        console.log(email, password);
+        // console.log(email, password); 
 
         // password validation
         // const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
@@ -19,6 +24,7 @@ const SignIn = () => {
         handleSignIn(email, password)
             .then(result => {
                 console.log("signin",result.user)
+                navigate(from)
             })
             .catch(error => {
                 console.log(error)
