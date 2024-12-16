@@ -39,6 +39,7 @@ const JobApply = () => {
                 alert("Job apply Successfull")
             }
         })
+        
         navigate("/myApplications")
 
     }

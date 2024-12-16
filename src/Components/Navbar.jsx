@@ -17,10 +17,12 @@ const Navbar = () => {
     }
 
     const links = 
-    <div className="flex items-center">
+    <div className="flex items-center gap-8">
 
         <NavLink to="/"><li>Home</li></NavLink>
         <NavLink to="/myApplications"><li>My Applications</li></NavLink>
+        <NavLink to="/addJob"><li>Add a Job</li></NavLink>
+        <NavLink to="/myPostedJobs"><li>My Posted Jobs</li></NavLink>
 
     </div>
 
