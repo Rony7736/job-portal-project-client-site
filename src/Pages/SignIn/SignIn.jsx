@@ -3,9 +3,10 @@ import LoginLottieData from "../../assets/lottie/signin.json"
 import { useContext } from "react";
 import authContext from "../../Context/AuthContext/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SignIn = () => {
-    const {handleSignIn} = useContext(authContext)
+    const { handleSignIn } = useContext(authContext)
 
     const location = useLocation()
     const navigate = useNavigate()
@@ -23,8 +24,15 @@ const SignIn = () => {
 
         handleSignIn(email, password)
             .then(result => {
-                console.log("signin",result.user)
-                navigate(from)
+                console.log("signin", result.user.email)
+                const user = { email: email }
+
+                // axios user kore easyly data post korar system
+                axios.post('http://localhost:5000/jwt', user)
+                .then(data => {
+                    console.log(data)                    
+                })
+                // navigate(from)
             })
             .catch(error => {
                 console.log(error)

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useAuth from "../Hooks/UseAuth";
+import { Link } from "react-router-dom";
 
 const MyPostedJobs = () => {
 
@@ -26,19 +27,22 @@ const MyPostedJobs = () => {
                             <th></th>
                             <th>job title</th>
                             <th>Deadline</th>
-                            <th>Favorite Color</th>
+                            <th>Applications</th>
                         </tr>
                     </thead>
                     <tbody>
                         {/* row 1 */}
                         {
-                            jobs.map((job, index) => 
+                            jobs.map((job, index) =>
                             (<tr key={job._id} className="bg-base-200">
                                 <th>{index + 1}</th>
                                 <td>{job.title}</td>
                                 <td>{job.applicationDeadline}</td>
-                                <td>Quality Control Specialist</td>
-                                <td>Blue</td>
+                                <td>
+                                    <Link to={`/viewApplications/${job._id}`}>
+                                        <button className="btn btn-link">View Applications</button>
+                                    </Link>
+                                </td>
                             </tr>))
                         }
                     </tbody>
