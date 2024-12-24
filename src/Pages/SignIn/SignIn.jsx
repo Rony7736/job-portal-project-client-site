@@ -28,9 +28,10 @@ const SignIn = () => {
                 const user = { email: email }
 
                 // axios user kore easyly data post korar system
-                axios.post('http://localhost:5000/jwt', user)
-                .then(data => {
-                    console.log(data)                    
+                axios.post('http://localhost:5000/jwt', user, {
+                    withCredentials: true})
+                .then(res => {
+                    console.log(res.data)                    
                 })
                 // navigate(from)
             })
